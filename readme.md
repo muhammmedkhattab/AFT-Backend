@@ -1,6 +1,6 @@
 **PreRequisites:**
 
-	java JDK installed 
+	java JDK 14 installed (hint change in the pom file to change to your java version line (156,157, "source","target")
 	    url:https://www.oracle.com/de/java/technologies/javase-downloads.html
 	maven installed
 	    url:https://maven.apache.org/install.html
