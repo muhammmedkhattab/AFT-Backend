@@ -26,7 +26,7 @@ public class E2ETests extends TestBase {
   @Epic("Regression")
   @Feature("Pets Feature")
   @Link("https://petstore.swagger.io")
-  @Test(groups = {"PetsIntegration"})
+  @Test(enabled=false,groups = {"PetsIntegration"})
   void userAdd_Edit_Delete_Get_PetTest() {
     JsonHelper jsonHelper = new JsonHelper();
     Pet pet = petObjectPreparation();
