@@ -1,0 +1,16 @@
+
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Regression">
+    <test name="Regression Test Suite">
+        <groups>
+            <run>
+                <include name="${groups}"></include>
+            </run>
+        </groups>
+        <classes>
+            <class name="PetsTests"/>
+            <class name="E2ETests"/>
+        </classes>
+    </test>
+
+</suite>
