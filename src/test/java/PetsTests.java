@@ -134,9 +134,10 @@ public class PetsTests extends TestBase {
     JsonHelper jsonHelper = new JsonHelper();
     String id;
     String deletedId;
+    long randomIndex= faker.number().numberBetween(0, 20);
     userFiltersPetsByStatusPendingSuccessfully();
 
-    id=jsonHelper.getResponseValue(response, "id[0]");
+    id=jsonHelper.getResponseValue(response, "id["+randomIndex+"]");
     endpoint = Endpoint.getBaseURI(id);
     response = restAction.deleteRequest(endpoint, 200);
 
