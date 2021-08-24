@@ -1,0 +1,14 @@
+**Reporting:**
+
+ Regarding the reporting I already integrated and implemented the allure report as it has many advantages for example if the business are
+ not involved in the project and they want to see a good looking report that they can understand it as we can add "story,feature,link..etc"
+ Allure Report is a flexible lightweight multi-language test report tool that not only shows a very concise representation
+ of what have been tested in a neat web report form,but allows everyone participating in the development process
+ to extract maximum of useful information from everyday execution of tests, it easier than implementation the whole BBD from scratch from my perspective
+ and from a technical part we could se the Request and respond in simple way in the Report.
+
+ On the other hand,from a CI point of view, it can be easily integrated for example to Jenkins there is a plugin called "allure-plugin"
+ that we can configure it then any one who runs the tests can start seeing the report there fore is reusable report that can integrate the
+ whole team together.
+
+ Finally I added some images to my last run with allure report in the email
