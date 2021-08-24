@@ -35,7 +35,10 @@ public class RestAction {
 
   public Response postImageRequest(String requestURI,int statusCode) {
 
-    RequestSpecification requestSpecification = given().multiPart("file", new File(System.getProperty("user.dir")+IMAGES_SRC+IMAGE_NAME+IMAGE_JPEG_EXTENSION));
+    RequestSpecification requestSpecification = given()
+      .multiPart("file", new File(System.getProperty("user.dir")+IMAGES_SRC+IMAGE_NAME+IMAGE_JPEG_EXTENSION))
+      .filter(new AllureRestAssured());
+
     Response response = requestSpecification.post(requestURI);
     RequestBuilder(response, requestSpecification, statusCode);
     return response;
