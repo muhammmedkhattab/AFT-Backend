@@ -11,6 +11,6 @@
 
  On the other hand,regarding the CI point of view, it can be easily integrated for example in Jenkins there is a plugin called "allure-plugin"
  that we can configure it, then anyone who runs the tests can display the report therefore it is reusable report that can integrate easily
- for the whole team together.
+ for the whole team together. Also I am open for any other tool that makes sense and really help out the whole team
 
  Finally I added some images to my last run with allure report in the email.
