@@ -19,6 +19,8 @@
         <org.slf4j.version>1.7.26</org.slf4j.version>
         <jackson-annotation.version>2.12.3</jackson-annotation.version>
         <lombok.version>1.18.20</lombok.version>
+        <awaitility.version>4.1.0</awaitility.version>
+        <async-http-client.version>2.12.3</async-http-client.version>
     </properties>
     <dependencies>
         <dependency>
@@ -70,7 +72,7 @@
             <version>${rest-assured.version}</version>
             <scope>PetsTests</scope>
         </dependency>
-             <dependency>
+        <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-junit4</artifactId>
             <version>${allure-testng.version}</version>
@@ -92,6 +94,18 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
             <version>${jackson-annotation.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.awaitility</groupId>
+            <artifactId>awaitility</artifactId>
+            <version>${awaitility.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.asynchttpclient</groupId>
+            <artifactId>async-http-client</artifactId>
+            <version>${async-http-client.version}</version>
+            <type>pom</type>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -144,6 +158,12 @@
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-rest-assured</artifactId>
             <version>${allure-testng.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.awaitility</groupId>
+            <artifactId>awaitility</artifactId>
+            <version>4.1.0</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
     <build>
