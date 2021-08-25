@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 import helper.JsonHelper;
 import utilities.Endpoint;
 
+
 public class PetsTests extends TestBase {
   Response response;
 
@@ -74,14 +75,25 @@ public class PetsTests extends TestBase {
   @Epic("Regression")
   @Feature("Pets Feature")
   @Link("https://petstore.swagger.io/#/pet/getPetById")
-  @Test(groups = {"PetsRegression"})
-  void userFindPetByIdSuccessfully() {
+  @Test(groups = {"PetsRegression"},timeOut = 10000)
+  void userFindPetByIdSuccessfully() throws InterruptedException {
+    Response response ;
+    String id;
+    String endpoint = Endpoint.getBaseURI();
     RestAction restAction = new RestAction();
-    String endpoint = Endpoint.getBaseURI("4223372000666033241");
-    response = restAction.getRequest(endpoint, 200);
+    JsonHelper jsonHelper = new JsonHelper();
+    Pet pet = petObjectPreparation();
+
+    response = restAction.postRequest(endpoint, pet, 200, false);
+
+    id=jsonHelper.getResponseValue(response, "id");
+
+    endpoint = Endpoint.getBaseURI(id);
+    restAction.getRequest(endpoint, 200);
+
   }
 
-  @Description("User Find pet by ID")
+/*  @Description("User Find pet by ID")
   @Story("ZoPlus-06")
   @Epic("Regression")
   @Feature("Pets Feature")
@@ -90,9 +102,9 @@ public class PetsTests extends TestBase {
   void userSearchForAnyPetWithAnyID() {
     String key = "";
     RestAction restAction = new RestAction();
-    String endpoint = Endpoint.getBaseURI("4223372000666033241");
+    String endpoint = Endpoint.getBaseURI("4223372000666033242");
     response = restAction.getAnyResponseByID(endpoint, key, id, 200);
-  }
+  }*/
 
   @Description("User Updates a pet in the store with form data")
   @Story("ZoPlus-07")
@@ -100,13 +112,22 @@ public class PetsTests extends TestBase {
   @Feature("Pets Feature")
   @Link("https://petstore.swagger.io/#/pet/updatePetWithForm")
   @Test(groups = {"PetsRegression"})
-  void userUpdatePetByIdSuccessfully() {
+  void userUpdatePetByIdSuccessfully() throws InterruptedException {
     RestAction restAction = new RestAction();
-    endpoint = Endpoint.getBaseURI("4223372000666033241");
     Pet pet = petObjectPreparation();
+
+/**
+  due to flaky behavior can't depend on the chain unless I used thread.sleep()
+*/
+    //  JsonHelper jsonHelper = new JsonHelper();
+    //  userAddNewPetToStoreSuccessfully();
+    //  String id=jsonHelper.getResponseValue(response, "id");
+
+    String endpoint = Endpoint.getBaseURI("7308227435999201729");
     response = restAction.postRequest(endpoint, updatePetObject(pet, "Tokki",Status.pending),200, true);
     Assert.assertEquals(JsonHelper.getResponseValue(response, "code"), "200");
   }
+
   @Description("User Finds Pets by pending status")
   @Story("ZoPlus-08")
   @Epic("Regression")
@@ -132,9 +153,10 @@ public class PetsTests extends TestBase {
   void userDeletePetByIdSuccessfully() {
     RestAction restAction = new RestAction();
     JsonHelper jsonHelper = new JsonHelper();
+    long randomIndex= faker.number().numberBetween(0, 20);
     String id;
     String deletedId;
-    long randomIndex= faker.number().numberBetween(0, 20);
+
     userFiltersPetsByStatusPendingSuccessfully();
 
     id=jsonHelper.getResponseValue(response, "id["+randomIndex+"]");
@@ -145,7 +167,7 @@ public class PetsTests extends TestBase {
 
     deletedId=jsonHelper.getResponseValue(response, "id");
 
-    Assert.assertEquals(jsonHelper.getResponseValue(response, "status").toString(), "pending");
+    Assert.assertEquals(jsonHelper.getResponseValue(response, "status"), "pending");
     Assert.assertEquals(id,deletedId);
   }
 
