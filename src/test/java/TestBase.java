@@ -15,17 +15,15 @@ public class TestBase {
   String findByStatusUrl;
   Faker faker = new Faker();
   long id;
-  long generateId;
 
   @BeforeMethod()
   void init() {
     dataPreparation();
+
   }
 
   void dataPreparation() {
-    id = Long.parseLong(PropertyFileHelper.LoadTestDataFile.getProperty("id"));
-    generateId = faker.number().randomNumber(19, true);
-
+    id = faker.number().randomNumber(19, true);
     name = PropertyFileHelper.LoadTestDataFile.getProperty("name");
     categoryName = PropertyFileHelper.LoadTestDataFile.getProperty("categoryName");
     tagName = PropertyFileHelper.LoadTestDataFile.getProperty("tagName");
@@ -37,7 +35,7 @@ public class TestBase {
     Category category = new Category();
     Pet pet = new Pet();
     Tag tag = new Tag();
-    pet.setId(generateId);
+    pet.setId(id);
     pet.setName(name);
     pet.setStatus(Status.available);
     pet.setCategory(category);
