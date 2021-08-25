@@ -14,7 +14,7 @@
     Tests are located under: src/test/java 
     
 **Run:**
-    *If tests failed try to rerun them again as every time the results are different due to the Flaky behaviour for the API"
+    "If tests failed try to rerun them again as every time the results are different due to the Flaky behaviour for the API"
     
     Run all tests:
     
@@ -47,17 +47,20 @@
 	Reporting tool
 	
 	
-**Issues to be aware of**
+**Issues to be aware of:**
 
-    E2E flow and some other tests that relay on each other are not working this due to the flaky behaviour for the API 
+    E2E flow and some other tests that relay on each other are not working!
+    this due to the flaky behaviour for the API 
     implementated some waiting methods but some times fails due the timeout takes more than 10 second 
    
-       * This E2E flow will not work as there are 2 main issues :
-       *
-       *    1-API not reliable as in the Get request the id is found in the first request and not found in the following request
+     Some of the Reasons :
+
+       *    API not reliable as in the Get request the id is found in the first request and not found in the following request
+       
        *    Verified also that Swagger have this issue, added Video in the Email.
-       *
-       *    2-API is not reflected immediately so we need to add wait time implemented a method that help but also some times the timeout exceed
+
+       *    API is not reflected immediately so we need to add wait time implemented a method that help but also some times the timeout exceed
             and shouldn't be the case for a simple get and post request
-       *    and I don't know the SLA to test against ,finally didn't want to use Thread.sleep even with it some times it fails 
-       * */
+	    
+       *    I don't know the SLA to test against 
+       *    Didn't want to use Thread.sleep as not a professional way and even with it some times it fails 
